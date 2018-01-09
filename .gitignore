@@ -1,5 +1,7 @@
 api_token.txt
 Scripts/
+pip-selfcheck.json
+pyvenv.cfg
 
 # Created by https://www.gitignore.io/api/python
 
