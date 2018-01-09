@@ -20,6 +20,7 @@ def process_band_from_id(id):
     data = band["data"]
     processed_band = {}
 
+    if "id" in data: processed_band["band_id"] = data["id"]
     if "band_name" in data: processed_band["name"] = data["band_name"]
     if "genre" in data["details"]: processed_band["genre"] = data["details"]["genre"]
     if "logo" in data: processed_band["logo"] = data["logo"]
@@ -38,3 +39,16 @@ def process_band_from_id(id):
 def write_json_to_file(path, data):
     with open(path, 'w') as file:
          json.dump(data, file)
+
+
+def read_json_from_file(path):
+    with open(path, 'r') as file:
+        return json.load(file)
+
+
+def remove_invalid_ids(bands):
+    cleaned_bands = []
+    for band in bands:
+        if band["bio"] != "Invalid band ID.": cleaned_bands.append(band)
+
+    return cleaned_bands
